@@ -1,0 +1,50 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Game {
+  id: Float!
+  name: String!
+  bets: [Bet!]!
+}
+
+type Bet {
+  id: Float!
+  amount: Float!
+  currency: String!
+  game: Game!
+  user: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+  balances: [Balance!]!
+  bets: [Bet!]!
+}
+
+type Balance {
+  id: Int!
+  amount: Float!
+  user: User!
+}
+
+type Query {
+  user(id: Int!): User!
+  users: [User!]!
+  game(id: Int!): Game!
+  games: [Game!]!
+}
+
+type Mutation {
+  createUser(userData: CreateUserInput!): User!
+  createGame(data: CreateGameInput!): User!
+}
+
+input CreateUserInput {
+  name: String!
+}
+
+input CreateGameInput {
+  name: String!
+}
